@@ -1,0 +1,9 @@
+body {
+	text-rendering:optimizeLegibility;
+}
+
+#top {
+	height:500px;
+	position:relative;
+	width:auto;
+}

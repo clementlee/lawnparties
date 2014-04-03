@@ -1,1 +1,41 @@
-hello world
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Spring Lawnparties</title>
+
+		<meta name="description" content="Get pumped for Princeton's Spring 2014 Lawnparties! 
+		We've got some great stuff for you, from merch, to a charity, to the always important headliners.
+		Come take a peek!">
+
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+		<link rel="icon" type="image/jpeg" href="img/logo.jpg" />
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+		<script>
+			function initialize() {
+				var divH = $('#top').height()/2;
+				var pageH = $(window).height()/2;
+				$('#top').css({top: (pageH-divH)});
+			}
+
+			initialize();
+
+			$(window).on('resize',function(){
+				initialize();
+			});
+			$(document).ready(function() {
+				initialize();
+
+				$('#top').delay(1000).fadeOut(2000);
+
+			});
+		</script>
+
+	</head>
+	<body>
+		<div style="text-align: center;">
+			<img src="img/logo.jpg" id="top"></img>
+		</div>
+	</body>
+</html>
