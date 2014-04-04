@@ -1,9 +1,71 @@
 body {
 	text-rendering:optimizeLegibility;
+	font-family: "Arvo", serif;
 }
 
-#top {
+#logo {
 	height:500px;
 	position:relative;
 	width:auto;
+}
+
+#content {
+	display:none;
+}
+
+#content h1{
+	font-size:40px;
+	margin-top:0px;
+	text-align:center;
+}
+
+#top {
+	height:200px;
+	width:auto;
+}
+
+#navbar {
+	font-size:0px;
+	margin: 0 auto;
+	text-align:center;
+	padding:0;
+}
+
+.navbutt {
+	cursor: pointer; 
+	font-size:20px;
+	padding: 10px 20px;
+	margin:0;
+	/*box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	border:1px solid black;*/
+	display:inline-block;
+}
+
+.navbutt:hover {
+	border:0;
+	background-color:rgb(255,143,0);
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	display:inline-block;
+}
+
+.contdiv {
+	text-align:center;
+}
+
+footer {
+	padding:25px;
+	text-align:center;
+}
+
+footer a {
+	color:inherit;
+	text-decoration:none;
+}
+
+footer a:hover {
+	color:rgb(255, 143, 0);
 }

@@ -10,16 +10,27 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 
 		<link rel="icon" type="image/jpeg" href="img/logo.jpg" />
+		<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
 		<script>
 			function initialize() {
-				var divH = $('#top').height()/2;
+				var divH = $('#logo').height()/2;
 				var pageH = $(window).height()/2;
-				$('#top').css({top: (pageH-divH)});
+				$('#logo').css({top: (pageH-divH)});
+			}
+			initialize();
+
+			function preppage() {
+				$('#content').fadeIn(1000);
+				$('.contdiv').hide();
+				$('#merchdiv').show();
 			}
 
-			initialize();
+			function clicked(item) {
+				$('.contdiv').hide();
+				$('#'+$(item).attr('id')+'div').show();
+			}
 
 			$(window).on('resize',function(){
 				initialize();
@@ -27,7 +38,7 @@
 			$(document).ready(function() {
 				initialize();
 
-				$('#top').delay(1000).fadeOut(2000);
+				$('#logo').delay(1000).fadeOut(2000, preppage);
 
 			});
 		</script>
@@ -35,7 +46,41 @@
 	</head>
 	<body>
 		<div style="text-align: center;">
-			<img src="img/logo.jpg" id="top"></img>
+			<img src="img/logo.jpg" id="logo"></img>
+		</div>
+		<div id="content">
+			<div style="text-align: center;">
+				<img src="img/top.jpg" id="top"></img>
+			</div>
+			<header>
+			<h1>lawnparties spring 2014</h1>
+			</header>
+			<nav>
+			<div id="navbar">
+				<div class="navbutt" onclick="clicked(this)" id="merch">merch</div>
+				<div class="navbutt" onclick="clicked(this)" id="head">headliners</div>
+				<div class="navbutt" onclick="clicked(this)" id="charity">charity</div>
+				<div class="navbutt" onclick="clicked(this)" id="about">about</div>
+			</div>
+			<div id="navcont">	
+				<div class="contdiv" id="merchdiv">
+					a
+				</div>
+				<div class="contdiv" id="headdiv">
+					b
+				</div>
+				<div class="contdiv" id="charitydiv">
+					c
+				</div>
+				<div class="contdiv" id="aboutdiv">
+					d
+				</div>
+			</div>
+			</nav>
+			<footer>
+			Contact us at ???<br>
+			&copy; design <a href="//clementl.com">clement lee</a> 2014
+			</footer>
 		</div>
 	</body>
 </html>
