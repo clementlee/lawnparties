@@ -20,7 +20,7 @@
 				$('#logo').css({top: (pageH-divH)});
 			}
 			initialize();
-
+			active = '#merchdiv';
 			function preppage() {
 				$('#content').fadeIn(1000);
 				$('.contdiv').hide();
@@ -28,8 +28,10 @@
 			}
 
 			function clicked(item) {
-				$('.contdiv').hide();
-				$('#'+$(item).attr('id')+'div').show();
+				$(active).fadeOut(300, function() {
+					active = '#'+$(item).attr('id')+'div';
+					$(active).fadeIn(300);
+				});
 			}
 
 			$(window).on('resize',function(){
@@ -64,16 +66,20 @@
 			</div>
 			<div id="navcont">	
 				<div class="contdiv" id="merchdiv">
-					a
+					Check out our amazing merchandise, from t-shirts to (what do we have?)! 
+					You can get it by clicking
+					<a href="https://odusapps.princeton.edu/lptickets/"><div id="merchbutt">here</div></a>
 				</div>
 				<div class="contdiv" id="headdiv">
-					b
+					wouldn't you like to know, huh.
 				</div>
 				<div class="contdiv" id="charitydiv">
-					c
+					we're donating towards a wonderful charity called the TEAM charter schools!
+					you should get to know them.
+					<img id="charity" src="img/charity.jpg"></img><br>
 				</div>
 				<div class="contdiv" id="aboutdiv">
-					d
+					i'll copy stuff over here.
 				</div>
 			</div>
 			</nav>
