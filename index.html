@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Spring Lawnparties</title>
+<head>
+	<title>Spring Lawnparties</title>
 
-		<meta name="description" content="Get pumped for Princeton's Spring 2014 Lawnparties! 
-		We've got some great stuff for you, from merch, to a charity, to the always important headliners.
-		Come take a peek!">
+	<meta name="description" content="Get pumped for Princeton's Spring 2014 Lawnparties! 
+	We've got some great stuff for you, from merch, to a charity, to the always important headliners.
+	Come take a peek!">
 
-		<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 
-		<link rel="icon" type="image/jpeg" href="img/logo.jpg" />
-		<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<link rel="icon" type="image/jpeg" href="img/logo.jpg" />
+	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
-		<script>
-			function initialize() {
-				var divH = $('#logo').height()/2;
-				var pageH = $(window).height()/2;
-				$('#logo').css({top: (pageH-divH)});
-			}
+	<script>
+		function initialize() {
+			var divH = $('#logo').height()/2;
+			var pageH = $(window).height()/2;
+			$('#logo').css({top: (pageH-divH)});
+		}
+		initialize();
+		active = '#merchdiv';
+		function preppage() {
+			$('#content').fadeIn(700);
+			$('.contdiv').hide();
+			$('#merchdiv').show();
+		}
+
+		function clicked(item) {
+			$(active).fadeOut(300, function() {
+				active = '#'+$(item).attr('id')+'div';
+				$(active).fadeIn(300);
+			});
+		}
+
+		$(window).on('resize',function(){
 			initialize();
-			active = '#merchdiv';
-			function preppage() {
-				$('#content').fadeIn(1000);
-				$('.contdiv').hide();
-				$('#merchdiv').show();
-			}
+		});
+		$(document).ready(function() {
+			initialize();
 
-			function clicked(item) {
-				$(active).fadeOut(300, function() {
-					active = '#'+$(item).attr('id')+'div';
-					$(active).fadeIn(300);
-				});
-			}
+			$('#logo').delay(1000).fadeOut(500, preppage);
 
-			$(window).on('resize',function(){
-				initialize();
-			});
-			$(document).ready(function() {
-				initialize();
+		});
+	</script>
 
-				$('#logo').delay(1000).fadeOut(2000, preppage);
-
-			});
-		</script>
-
-	</head>
-	<body>
+</head>
+<body>
+	<div style="text-align: center;">
+		<img src="img/logo.jpg" id="logo"></img>
+	</div>
+	<div id="content">
 		<div style="text-align: center;">
-			<img src="img/logo.jpg" id="logo"></img>
+			<img src="img/top.jpg" id="top"></img>
 		</div>
-		<div id="content">
-			<div style="text-align: center;">
-				<img src="img/top.jpg" id="top"></img>
-			</div>
-			<header>
+		<header>
 			<h1>lawnparties spring 2014</h1>
-			</header>
-			<nav>
+		</header>
+		<nav>
 			<div id="navbar">
 				<div class="navbutt" onclick="clicked(this)" id="merch">merch</div>
 				<div class="navbutt" onclick="clicked(this)" id="head">headliners</div>
@@ -66,9 +66,9 @@
 			</div>
 			<div id="navcont">	
 				<div class="contdiv" id="merchdiv">
-					Check out our amazing merchandise, from t-shirts to (what do we have?)! 
+					Check out our amazing merchandise, from t-shirts to croakies! 
 					You can get it by clicking
-					<a href="https://odusapps.princeton.edu/lptickets/"><div id="merchbutt">here</div></a>
+					<a href="https://odusapps.princeton.edu/tshirt/"><div id="merchbutt">here</div></a>
 				</div>
 				<div class="contdiv" id="headdiv">
 					wouldn't you like to know, huh.
@@ -82,11 +82,11 @@
 					i'll copy stuff over here.
 				</div>
 			</div>
-			</nav>
-			<footer>
+		</nav>
+		<footer>
 			Contact us at ???<br>
 			&copy; design <a href="//clementl.com">clement lee</a> 2014
-			</footer>
-		</div>
-	</body>
+		</footer>
+	</div>
+</body>
 </html>
