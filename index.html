@@ -20,11 +20,11 @@
 			$('#logo').css({top: (pageH-divH)});
 		}
 		initialize();
-		active = '#merchdiv';
+		active = '#aboutdiv';
 		function preppage() {
 			$('#content').fadeIn(700);
 			$('.contdiv').hide();
-			$('#merchdiv').show();
+			$('#aboutdiv').show();
 		}
 
 		function clicked(item) {
@@ -42,7 +42,59 @@
 
 			$('#logo').delay(1000).fadeOut(500, preppage);
 
+			// set the date we're counting down to
+			var target_date = new Date("May 4, 2014").getTime();
+
+			// variables for time units
+			var days, hours, minutes, seconds;
+
+			// get tag element
+			var countdown = document.getElementById("countdown");
+
+			// update the tag with id "countdown" every 1 second
+			setInterval(function () {
+
+				// find the amount of "seconds" between now and target
+				var current_date = new Date().getTime();
+				var seconds_left = (target_date - current_date) / 1000;
+
+				// do some time calculations
+				days = parseInt(seconds_left / 86400);
+				seconds_left = seconds_left % 86400;
+
+				hours = parseInt(seconds_left / 3600);
+				seconds_left = seconds_left % 3600;
+
+				minutes = parseInt(seconds_left / 60);
+				seconds = parseInt(seconds_left % 60);
+
+				if(days < 0)
+					days = 0;
+				if(hours < 0)
+					hours = 0;
+				if(minutes < 0)
+					minutes= 0;
+				if(seconds < 0)
+					seconds = 0;
+
+				var daystext = " day, ", hourstext= " hour, ", minutestext=" minute, and", secondstext=" second";
+				if(days != 1)
+					daystext = " days, ";
+				if(hours != 1)
+					hourstext = " hours, ";
+				if(minutes != 1)
+					minutestext = " minutes, and ";
+				if(seconds != 1)
+					secondstext = " seconds";
+
+				// format countdown string + set tag value
+				countdown.innerHTML = days + daystext + hours + hourstext
+				+ minutes + minutestext + seconds+secondstext+" to go!";  
+
+			}, 1000);
+			
 		});
+
 	</script>
 
 </head>
@@ -59,32 +111,86 @@
 		</header>
 		<nav>
 			<div id="navbar">
+				<div class="navbutt" onclick="clicked(this)" id="about">about</div>
 				<div class="navbutt" onclick="clicked(this)" id="merch">merch</div>
 				<div class="navbutt" onclick="clicked(this)" id="head">headliners</div>
+				<div class="navbutt" onclick="clicked(this)" id="raffle">raffle</div>
 				<div class="navbutt" onclick="clicked(this)" id="charity">charity</div>
-				<div class="navbutt" onclick="clicked(this)" id="about">about</div>
+				<div class="navbutt" onclick="clicked(this)" id="hist">history</div>
 			</div>
 			<div id="navcont">	
 				<div class="contdiv" id="merchdiv">
-					Check out our amazing merchandise, from t-shirts to croakies! 
+					Check out our amazing merchandise!<br>
 					You can get it by clicking
 					<a href="https://odusapps.princeton.edu/tshirt/"><div id="merchbutt">here</div></a>
+
+					tanks: $11<br>
+					croakies: $4<br><br>
+
+					please consider buying some merchandise!<br> all proceeds benefit TEAM Charter Schools.<br>tank design by simon wu.<br><br>
+					more stuff coming soon...
 				</div>
 				<div class="contdiv" id="headdiv">
-					wouldn't you like to know, huh.
+					stay tuned for a huge announcement!
 				</div>
 				<div class="contdiv" id="charitydiv">
-					we're donating towards a wonderful charity called the TEAM charter schools!
-					you should get to know them.
 					<img id="charity" src="img/charity.jpg"></img><br>
+					TEAM Charter Schools is an organization dedicated to promoting high academic standards among low income neighborhoods. they an amazing charity that oversees seven high performing charter schools with four more in the works. check them out at:<br>
+
+					<a href="//www.teamschools.org"><div id="charitybutt">www.teamschools.org</div></a><br>
+
+					please consider buying merchandise or a raffle ticket to support them!
+
 				</div>
 				<div class="contdiv" id="aboutdiv">
-					i'll copy stuff over here.
+					<div class="sechead">
+						sunday, may 4<br>
+					</div>
+					<br><div id="countdown" style="text-align:center"></div><br>
+					music, debauchery, good weather, and wearing three polos at the same time: these are just a few of the things you might see walking down prospect avenue on lawnparties. the event has traditionally been princeton's premier day to let loose, listen to some tunes, and have fun with nearly everyone on campus. this spring will be no different. get excited princeton&mdash;between our amazing headliners and the food and activities, this will easily be the best lawnparties you've experienced to date. it might even be the best day you have during your entire college experience.<br>
+					<div style="width:100%;text-align:right">
+						&ndash;usg social committee
+					</div>
+				</div>
+				<div class="contdiv" id="rafflediv">
+					<div class="sechead">
+						confirmed prizes (more to come):<br><br>
+					</div>
+					1. spend the day with Caraun Reid '13. <br><br>
+					2. have your favorite a capella group at your disposal! they will serenade you or a person or your choice with any few songs from their repertoire.<br><br>
+					3. headliner poster pack.<br><br>
+					4. a song written about and specially for you sung by rhodes scholar Adam Mastroiannni '14 on "Late night with David Drew."<br><br>
+					5. TBD<br><br>
+					6. TBD<br><br>
+				</div>
+				<div class="contdiv" id="histdiv">
+					<div class="sechead">
+						the old days<br><br>
+					</div>
+					<p>Lawnparties is a unique event that now happens twice a year. It brings the Princeton community together to either welcome in a new year full of promise and hopes or celebrate the close of another (hopefully successful) year.  </p>
+
+					<p>It is also, however, an event that continually brings together a wide-array of musical guests and performers to put on a great show for the student body right in our own backyard, or more accurately, in recent years, in Quad's backyard.</p>
+
+					<p>As with any tradition, half of the appreciation of it comes from the direct experience of the events, but the other half comes from a look back at its origin and an understanding of what makes it special.  </p>
+
+					<p>The Street, at lawnparties, in the past has played host to many rising artists that are now extremely successful chart-toppers including Rihanna, Maroon 5 and Lifehouse. However, Princeton has never been a stranger to popular and successful musical acts.</p> 
+
+					<p>In the days before Lawnparties was known as Lawnparties, there were many concerts and events that took place in Jadwin Gym, Dillon Gym, and McCarter Theatre.  Here are just a few of the more noteworthy performances:</p>
+
+					<ul>
+						<li>On May 5, 1967, Simon and Garfunkel descended on Princeton's campus to play a show at McCarter Theatre.  The tickets for this event cost between $3.50 and $2.50 </li>
+						<li>On April 27, 1974 the UGA and McCarter Theatre convince the University to open up the Jadwin Cage as a venue to accommodate larger rock groups for the first time and bring in Cat Stevens.  This was followed up in the winter of 1974 with Jadwin's second concert, The Beach Boys.</li>
+						<li>On November 1, 1978 students camped outside McCarter Theatre in order to get tickets to see Bruce "The Boss" Springsteen and not one of them was disappointed by a concert in which every song worked a certain magic over the crowd. According to legend, it was a crowd which got rowdy enough to damage the floor of Jadwin.</li>
+						<li>In the spring of 1985, after REM cancelled on the USG to extend its European tour, REM accepts to play the show for a low price, which was opened up by Chaka Khan. The event was free for freshmen and sophomores, but upperclassmen had to pay $5 to attend and, despite this charge, the event still went way over budget, costing the USG $13,651.</li>
+						<li>In 1996, the USG helps bring James Brown to Dillon Gym.  The 2000 tickets sell out within a day and half and The Godfather of Soul did not disappoint his audience.</li>
+						<li>In the spring of 2001, country legend Willie Nelson plays on Cannon Green to a captive audience and, in November of the same year, rock legend Billy Joel plays for a packed Richardson Auditorium.</li>
+					</ul>
+
+					<p>Over the past half century our campus has featured other shows from Miles Davis to the Grateful Dead and everything in between. The significance of live acts to campus life across the decades should be widely recognized by the Princeton community. </p>
 				</div>
 			</div>
 		</nav>
 		<footer>
-			Contact us at ???<br>
 			&copy; design <a href="//clementl.com">clement lee</a> 2014
 		</footer>
 	</div>
