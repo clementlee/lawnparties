@@ -1,115 +1,125 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Spring Lawnparties</title>
+	<head>
+		<title>Spring Lawnparties</title>
 
-	<meta name="description" content="Get pumped for Princeton's Spring 2014 Lawnparties! 
-	We've got some great stuff for you, from merch, to a charity, to the always important headliners.
-	Come take a peek!">
+		<meta name="description" content="Get pumped for Princeton's Spring 2014 Lawnparties! 
+		We've got some great stuff for you, from merch, to a charity, to the always important headliners.
+		Come take a peek!">
 
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
 
-	<link rel="icon" type="image/jpeg" href="img/logo.jpg" />
-	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<link rel="icon" type="image/jpeg" href="img/logo.jpg" />
+		<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
-	<script>
-		function initialize() {
-			var divH = $('#logo').height()/2;
-			var pageH = $(window).height()/2;
-			$('#logo').css({top: (pageH-divH)});
-		}
-		initialize();
-		active = '#aboutdiv';
-		function preppage() {
-			$('#content').fadeIn(700);
-			$('.contdiv').hide();
-			$('#aboutdiv').show();
-		}
+		<script>
+			function initialize() {
+				var divH = $('#logo').height()/2;
+				var pageH = $(window).height()/2;
+				$('#logo').css({top: (pageH-divH)});
+			}
+			initialize();
+			active = '#aboutdiv';
+			function preppage() {
+				$('#content').fadeIn(700);
+				$('.contdiv').hide();
+				$('#aboutdiv').show();
+			}
 
-		function clicked(item) {
-			$(active).fadeOut(300, function() {
-				active = '#'+$(item).attr('id')+'div';
-				$(active).fadeIn(300);
+			function clicked(item) {
+				$(active).fadeOut(300, function() {
+					active = '#'+$(item).attr('id')+'div';
+					$(active).fadeIn(300);
+				});
+			}
+
+			$(window).on('resize',function(){
+				initialize();
 			});
-		}
+			$(document).ready(function() {
+				initialize();
 
-		$(window).on('resize',function(){
-			initialize();
-		});
-		$(document).ready(function() {
-			initialize();
+				$('#logo').delay(1000).fadeOut(500, preppage);
 
-			$('#logo').delay(1000).fadeOut(500, preppage);
+				// set the date we're counting down to
+				var target_date = new Date("May 4, 2014").getTime();
 
-			// set the date we're counting down to
-			var target_date = new Date("May 4, 2014").getTime();
+				// variables for time units
+				var days, hours, minutes, seconds;
 
-			// variables for time units
-			var days, hours, minutes, seconds;
+				// get tag element
+				var countdown = document.getElementById("countdown");
 
-			// get tag element
-			var countdown = document.getElementById("countdown");
+				// update the tag with id "countdown" every 1 second
+				setInterval(function () {
 
-			// update the tag with id "countdown" every 1 second
-			setInterval(function () {
+					// find the amount of "seconds" between now and target
+					var current_date = new Date().getTime();
+					var seconds_left = (target_date - current_date) / 1000;
 
-				// find the amount of "seconds" between now and target
-				var current_date = new Date().getTime();
-				var seconds_left = (target_date - current_date) / 1000;
+					// do some time calculations
+					days = parseInt(seconds_left / 86400);
+					seconds_left = seconds_left % 86400;
 
-				// do some time calculations
-				days = parseInt(seconds_left / 86400);
-				seconds_left = seconds_left % 86400;
+					hours = parseInt(seconds_left / 3600);
+					seconds_left = seconds_left % 3600;
 
-				hours = parseInt(seconds_left / 3600);
-				seconds_left = seconds_left % 3600;
+					minutes = parseInt(seconds_left / 60);
+					seconds = parseInt(seconds_left % 60);
 
-				minutes = parseInt(seconds_left / 60);
-				seconds = parseInt(seconds_left % 60);
-
-				if(days < 0)
+					if(days < 0)
 					days = 0;
-				if(hours < 0)
+					if(hours < 0)
 					hours = 0;
-				if(minutes < 0)
+					if(minutes < 0)
 					minutes= 0;
-				if(seconds < 0)
+					if(seconds < 0)
 					seconds = 0;
 
-				var daystext = " day, ", hourstext= " hour, ", minutestext=" minute, and", secondstext=" second";
-				if(days != 1)
+					var daystext = " day, ", hourstext= " hour, ", minutestext=" minute, and", secondstext=" second";
+					if(days != 1)
 					daystext = " days, ";
-				if(hours != 1)
+					if(hours != 1)
 					hourstext = " hours, ";
-				if(minutes != 1)
+					if(minutes != 1)
 					minutestext = " minutes, and ";
-				if(seconds != 1)
+					if(seconds != 1)
 					secondstext = " seconds";
 
-				// format countdown string + set tag value
-				countdown.innerHTML = days + daystext + hours + hourstext
-				+ minutes + minutestext + seconds+secondstext+" to go!";  
+					// format countdown string + set tag value
+					countdown.innerHTML = days + daystext + hours + hourstext
+					+ minutes + minutestext + seconds+secondstext+" to go!";  
 
-			}, 1000);
-			
-		});
+				}, 1000);
 
-	</script>
+			});
 
-</head>
-<body>
-	<div style="text-align: center;">
-		<img src="img/logo.jpg" id="logo"></img>
-	</div>
-	<div id="content">
+		</script>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-35235592-3', 'lawnparties.com');
+			ga('send', 'pageview');
+
+		</script>
+
+	</head>
+	<body>
 		<div style="text-align: center;">
-			<img src="img/top.jpg" id="top"></img>
+			<img src="img/logo.jpg" id="logo"></img>
 		</div>
-		<header>
+		<div id="content">
+			<div style="text-align: center;">
+				<img src="img/top.jpg" id="top"></img>
+			</div>
+			<header>
 			<h1>lawnparties spring 2014</h1>
-		</header>
-		<nav>
+			</header>
+			<nav>
 
 			<div id="navbar">
 				<div class="navbutt" onclick="clicked(this)" id="about">about</div>
@@ -205,24 +215,24 @@
 					<p>Over the past half century our campus has featured other shows from Miles Davis to the Grateful Dead and everything in between. The significance of live acts to campus life across the decades should be widely recognized by the Princeton community. </p>
 				</div>
 				<div class="contdiv" id="fooddiv">
-				The following is confirmed to be coming:<br><br>
+					The following is confirmed to be coming:<br><br>
 
-				Taco Bell<br>
-				<a href="http://www.auntieannes.com/">Auntie Anne's</a><br>
-				<a href="http://www.nomadpizzaco.com/">Nomad Pizza Truck</a><br>
-				<a href="http://www.thetotcart.com/">The Tot Cart</a><br>
-				Ice Cream Truck<br><br>
+					Taco Bell<br>
+					<a href="http://www.auntieannes.com/">Auntie Anne's</a><br>
+					<a href="http://www.nomadpizzaco.com/">Nomad Pizza Truck</a><br>
+					<a href="http://www.thetotcart.com/">The Tot Cart</a><br>
+					Ice Cream Truck<br><br>
 
-				and more in the works!<br><br>
+					and more in the works!<br><br>
 
-				There will also be outdoor games, temporary tattoos, and roaming photographers.
+					There will also be outdoor games, temporary tattoos, and roaming photographers.
 				</div>
 			</div>
-		</nav>
-		<footer>
+			</nav>
+			<footer>
 			Contact us at: <a href="mailto:info@lawnparties.com">info@lawnparties.com</a><br>
 			&copy; design <a href="//clementl.com">clement lee</a> 2014
-		</footer>
-	</div>
-</body>
+			</footer>
+		</div>
+	</body>
 </html>
